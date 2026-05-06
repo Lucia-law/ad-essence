@@ -55,10 +55,10 @@ const PRODUCT_NAMES: Record<string, string> = {
 
 // 普通模式痛点
 const PAIN_POINTS = [
-  { icon: <Timer className="w-5 h-5" />, title: "时长过长", desc: "平均广告60秒，超出用户耐心阈值", stat: "60s", color: "text-rose-500" },
-  { icon: <EyeOff className="w-5 h-5" />, title: "注意力涣散", desc: "前15秒注意力流失率高达45%", stat: "45%", color: "text-amber-500" },
-  { icon: <AlertTriangle className="w-5 h-5" />, title: "信息稀释", desc: "核心卖点被冗余内容淹没", stat: "3x", color: "text-orange-500" },
-  { icon: <SkipForward className="w-5 h-5" />, title: "主动跳过", desc: "超过60%用户选择跳过广告", stat: "60%", color: "text-red-500" },
+  { icon: <Timer className="w-5 h-5" />, title: "时长过长", desc: "贴片广告40-120秒，远超用户耐心", stat: "40s+", color: "text-rose-500" },
+  { icon: <EyeOff className="w-5 h-5" />, title: "注意力涣散", desc: "多数人前15秒就走了，后半段白拍", stat: "15s", color: "text-amber-500" },
+  { icon: <AlertTriangle className="w-5 h-5" />, title: "信息稀释", desc: "关键卖点藏在冗余内容里，观众记不住", stat: "冗余", color: "text-orange-500" },
+  { icon: <SkipForward className="w-5 h-5" />, title: "主动跳过", desc: "用户普遍选择跳过或切屏，广告白投", stat: "跳过", color: "text-red-500" },
 ]
 
 /**
