@@ -1,0 +1,378 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+/* Inter字体 - 本地加载 */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Variable-Italic.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* 温暖米黄色调 - 纸张质感 */
+  --background: oklch(0.965 0.018 85);
+  --foreground: oklch(0.22 0.02 50);
+  --card: oklch(0.975 0.012 82);
+  --card-foreground: oklch(0.22 0.02 50);
+  --popover: oklch(0.98 0.01 85);
+  --popover-foreground: oklch(0.22 0.02 50);
+  /* 深橄榄绿主色 */
+  --primary: oklch(0.38 0.06 145);
+  --primary-foreground: oklch(0.98 0.01 85);
+  --secondary: oklch(0.94 0.015 80);
+  --secondary-foreground: oklch(0.28 0.02 50);
+  --muted: oklch(0.92 0.02 78);
+  --muted-foreground: oklch(0.50 0.02 50);
+  /* 珊瑚橙点缀 */
+  --accent: oklch(0.68 0.14 38);
+  --accent-foreground: oklch(0.20 0.02 38);
+  --destructive: oklch(0.58 0.18 28);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.88 0.02 75);
+  --input: oklch(0.96 0.012 85);
+  --ring: oklch(0.38 0.06 145);
+  --chart-1: oklch(0.38 0.06 145);
+  --chart-2: oklch(0.68 0.14 38);
+  --chart-3: oklch(0.55 0.10 85);
+  --chart-4: oklch(0.50 0.08 200);
+  --chart-5: oklch(0.60 0.12 320);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.96 0.015 85);
+  --sidebar-foreground: oklch(0.22 0.02 50);
+  --sidebar-primary: oklch(0.38 0.06 145);
+  --sidebar-primary-foreground: oklch(0.98 0.01 85);
+  --sidebar-accent: oklch(0.94 0.02 80);
+  --sidebar-accent-foreground: oklch(0.28 0.02 50);
+  --sidebar-border: oklch(0.88 0.02 75);
+  --sidebar-ring: oklch(0.38 0.06 145);
+}
+
+@theme inline {
+  --font-sans: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-serif: 'Crimson Pro', Georgia, 'Noto Serif SC', serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv01", "liga";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* 纸张纹理背景 */
+.paper-bg {
+  background-image: 
+    radial-gradient(circle at 25% 25%, oklch(0.95 0.02 80 / 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, oklch(0.93 0.025 75 / 0.3) 0%, transparent 50%);
+}
+
+/* 手绘风格装饰 */
+.hand-drawn {
+  position: relative;
+}
+
+.hand-drawn::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 2px solid currentColor;
+  border-radius: 4px 12px 8px 16px;
+  opacity: 0.15;
+}
+
+/* 胶带效果 */
+.tape {
+  position: relative;
+}
+
+.tape::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 50px;
+  height: 14px;
+  background: linear-gradient(135deg, 
+    oklch(0.85 0.08 60 / 0.6) 0%, 
+    oklch(0.80 0.06 55 / 0.4) 100%
+  );
+  border-radius: 2px;
+}
+
+.tape-coral::before {
+  background: linear-gradient(135deg, 
+    oklch(0.75 0.12 35 / 0.5) 0%, 
+    oklch(0.70 0.10 40 / 0.3) 100%
+  );
+}
+
+.tape-mint::before {
+  background: linear-gradient(135deg, 
+    oklch(0.80 0.10 160 / 0.5) 0%, 
+    oklch(0.75 0.08 155 / 0.3) 100%
+  );
+}
+
+/* 图钉效果 */
+.pin {
+  position: relative;
+}
+
+.pin::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: 10px;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle at 35% 35%, 
+    oklch(0.55 0.15 28) 0%, 
+    oklch(0.40 0.12 25) 100%
+  );
+  border-radius: 50%;
+  box-shadow: 1px 2px 4px oklch(0 0 0 / 0.2);
+}
+
+/* 素描边框 */
+.sketch-border {
+  border: 2px solid oklch(0.40 0.04 50 / 0.2);
+  border-radius: 6px 18px 12px 24px;
+}
+
+/* 撕边纸张效果 */
+.torn-edge {
+  position: relative;
+}
+
+.torn-edge::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--background) 5%,
+    transparent 10%,
+    var(--background) 15%,
+    transparent 25%,
+    var(--background) 30%,
+    transparent 40%,
+    var(--background) 45%,
+    transparent 55%,
+    var(--background) 60%,
+    transparent 70%,
+    var(--background) 75%,
+    transparent 85%,
+    var(--background) 90%,
+    transparent 100%
+  );
+}
+
+/* 手写下划线 */
+.underline-sketch {
+  position: relative;
+  display: inline;
+}
+
+.underline-sketch::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: currentColor;
+  opacity: 0.3;
+  border-radius: 2px;
+  transform: skewX(-8deg) scaleY(0.6);
+}
+
+/* 涂鸦圆圈 */
+.doodle-circle {
+  position: relative;
+}
+
+.doodle-circle::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 2px dashed currentColor;
+  border-radius: 50% 45% 55% 48%;
+  opacity: 0.2;
+  transform: rotate(-3deg);
+}
+
+/* 手账风动态拼贴 */
+.journal-board {
+  background-color: var(--background);
+  background-image: radial-gradient(oklch(0.88 0.02 75) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  border-radius: 12px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+.note {
+  position: relative;
+  padding: 16px;
+  opacity: 0;
+  transform: scale(0.8) translateY(20px);
+  box-shadow: 2px 4px 12px rgba(0,0,0,0.06);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex: 1;
+}
+
+.note:hover {
+  transform: scale(1.05) rotate(var(--rot));
+  box-shadow: 4px 8px 20px rgba(0,0,0,0.12);
+}
+
+.note.show {
+  animation: notePopIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes notePopIn {
+  to { opacity: 1; transform: scale(1) translateY(0) rotate(var(--rot)); }
+}
+
+.note::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 36px;
+  height: 12px;
+  background-color: oklch(0.85 0.06 60 / 0.5);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  border-radius: 2px;
+}
+
+.note-1 {
+  background-color: oklch(0.98 0.005 85 / 0.7);
+  --rot: -1deg;
+}
+
+.note-2 {
+  background-color: oklch(0.97 0.015 80 / 0.7);
+  --rot: 2deg;
+}
+
+.note-2::before {
+  background-color: oklch(0.80 0.08 155 / 0.5);
+  top: -6px;
+  left: 30%;
+  transform: rotate(5deg);
+}
+
+.note-3 {
+  background-color: oklch(0.96 0.02 145 / 0.7);
+  --rot: -2deg;
+}
+
+.note-4 {
+  background-color: oklch(0.97 0.015 350 / 0.7);
+  --rot: 1deg;
+}
+
+.note-4::before {
+  background-color: oklch(0.75 0.10 35 / 0.4);
+  left: 70%;
+  transform: rotate(-5deg);
+}
+
+.journal-loading {
+  text-align: center;
+  color: oklch(0.50 0.02 50);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 20px;
+}
+
+.loading-dot::after {
+  content: '';
+  animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+  0% { content: ''; }
+  25% { content: '.'; }
+  50% { content: '..'; }
+  75% { content: '...'; }
+}
+
+/* 荧光笔高亮效果 */
+mark {
+  background: linear-gradient(180deg, transparent 50%, oklch(0.85 0.15 85 / 0.6) 50%);
+  color: inherit;
+  padding: 0 0.15em;
+  border-radius: 2px;
+}
