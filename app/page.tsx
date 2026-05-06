@@ -568,7 +568,7 @@ async function generateHighlights(product: any, userProfile: any) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer sk-b7fedf8657444fc2b3f655584acf5472`
+        'Authorization': `Bearer ${process.env.NEXT_PUBLIC_DEEPSEEK_API_KEY}`
       },
       body: JSON.stringify({
         model: 'deepseek-v4-flash',
@@ -709,7 +709,7 @@ ${allFeatures.map((f: any, i: number) => `${i + 1}. ${f.name}：${f.reason}`).jo
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer sk-b7fedf8657444fc2b3f655584acf5472`
+        'Authorization': `Bearer ${process.env.NEXT_PUBLIC_DEEPSEEK_API_KEY}`
       },
       body: JSON.stringify({
         model: 'deepseek-v4-flash',
